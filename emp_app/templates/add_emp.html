@@ -8,11 +8,37 @@
   <body>
   <div class="container">
     <h1>Employee Management System</h1>
+
       <hr>
-      <a class="btn btn-primary" href="/all_emp" role="button">View All Employee</a>
-      <a class="btn btn-primary" href="/add_emp" role="button">Add An Employee</a>
-      <a class="btn btn-primary" href="/remove_emp" role="button">Remove An Employee</a>
-      <a class="btn btn-primary" href="/filter_emp" role="button">Filter Employee Details</a>
+      <form action="/add_emp" method="post">
+          {% csrf_token %}
+    <label for="First_name" >First Name</label><br>
+        <input type="text" id="First_name" value="{{ First_name }}" ><br>
+
+          <label for="Last_name" >Last Name</label><br>
+    <input type="text" id="Last_name" name ="Last_name" value="{{ Last_name }}" ><br>
+
+          <label for="Salary" >Salary</label><br>
+    <input type="number" id="Salary" name="salary" value="{{ salary }}" ><br>
+
+          <label for="dept" >Department</label><br>
+    <input type="number" id="dept" name="dept" value="{{ dept }}" ><br>
+
+          <label for="role" >Role</label><br>
+    <input type="number" id="role" name="role" value="{{ role }}" ><br>
+
+          <label for="bonus" >Bonus</label><br>
+    <input type="number" id="bonus" name="bonus" value="{{ bonus }}" ><br>
+
+                    <label for="Phone" >Phone number</label><br>
+    <input type="number" id="Phone" name="Phone" value="{{ bonus }}" ><br>
+
+          <hr>
+      <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
   </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
