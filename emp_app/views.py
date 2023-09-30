@@ -2,10 +2,13 @@ from django.shortcuts import render, HttpResponse
 from .models import Employee, Role, Department
 from datetime import datetime
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+@login_required
 def index(request):
     return render(request, 'index.html')
 
+@login_required
 def all_emp(request):
 
     emps = Employee.objects.all()
@@ -15,7 +18,7 @@ def all_emp(request):
     print(context)
     return render(request, 'view_all_emp.html', context)
 
-
+@login_required
 def add_emp(request):
     if request.method == 'POST':
         First_name = request.POST['First_name']
@@ -35,6 +38,7 @@ def add_emp(request):
     else:
        return HttpResponse("An exception Occured! Employee Has Not Been Added")
 
+@login_required
 def remove_emp(request, emp_id = 0):
     if emp_id:
         try:
@@ -49,6 +53,7 @@ def remove_emp(request, emp_id = 0):
     }
     return render(request, 'remove_emp.html', context )
 
+@login_required
 def filter_emp(request):
     if request.method == 'POST':
         name = request.POST['name']
