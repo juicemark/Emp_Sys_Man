@@ -31,13 +31,11 @@ def add_emp(request):
         role = int(request.POST['role'])
         new_emp = Employee(first_name=first_name, last_name=last_name, salary=salary, bonus=bonus, phone=phone, dept_id= dept, role_id=role, hire_date= datetime.now())
         new_emp.save()
-        return HttpResponse('Employee added Successfully')
-
-    elif request.method=='GET':
-
-       return render(request, 'add_emp.html')
+        return render(request, 'add_emp.html', {'employee_added': True})
+    elif request.method == 'GET':
+        return render(request, 'add_emp.html')
     else:
-       return HttpResponse("An exception Occured! Employee Has Not Been Added")
+        return HttpResponse("An exception Occurred! Employee Has Not Been Added")
 
 @login_required
 def remove_emp(request, emp_id=0):
