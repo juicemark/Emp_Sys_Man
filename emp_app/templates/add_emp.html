@@ -14,10 +14,10 @@
 <form action="/add_emp" method="post">
     {% csrf_token %}
     <label for="first_name">First Name:</label><br>
-    <input type="text" pattern="^[a-zA-Z]+$" placeholder="Letters only" id="first_name" name="first_name" size="15" minlength="2" maxlength="12" required><br>
+    <input type="text"  placeholder="Letters only" id="first_name" name="first_name" maxlength="15" required><br>
 
     <label for="last_name">Last Name:</label><br>
-    <input type="text" pattern="^[a-zA-Z]+$" placeholder="Letters only" id="last_name" name = "last_name" size="15" minlength="2" maxlength="12" required><br>
+    <input type="text" placeholder="Letters only" id="last_name" name = "last_name" maxlength="15" required><br>
 
       <label for="dept">Department:</label> <br>
     <input type="number"  list="Department" placeholder="1-4" id="dept" name="dept" min="1" max="4" required >
@@ -46,7 +46,7 @@
     <input type="number" id="bonus" name="bonus" placeholder="P0-50000"  min="0" max="50000" step="500" required><br>
 
     <label for="phone">Phone Number:</label><br>
-    <input type="tel" id="phone" name="phone" placeholder="0000-000-0000" pattern="[0-9]{11}"required size="15" minlength="11" maxlength="18"><br>
+    <input type="tel" id="phone" name="phone" placeholder="0000-000-0000" pattern="[0-9]-{4}-[0-9]{3}-[0-9]{4}"required size="13" minlength="13" maxlength="13"><br>
 
     <hr>
     <button type="submit" class="btn btn-primary">Add</button>
