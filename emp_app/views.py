@@ -3,6 +3,7 @@ from .models import Employee, Role, Department
 from datetime import datetime
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 @login_required
 def index(request):
@@ -21,14 +22,14 @@ def all_emp(request):
 @login_required
 def add_emp(request):
     if request.method == 'POST':
-        First_name = request.POST['First_name']
-        Last_name = request.POST['Last_name']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
         salary = int(request.POST['salary'])
         bonus = int(request.POST['bonus'])
-        Phone = int(request.POST['Phone'])
+        phone = int(request.POST['phone'])
         dept = int(request.POST['dept'])
         role = int(request.POST['role'])
-        new_emp = Employee(first_name=First_name, last_name=Last_name, salary=salary, bonus=bonus, phone=Phone, dept_id= dept, role_id=role, hire_date= datetime.now())
+        new_emp = Employee(first_name=first_name, last_name=last_name, salary=salary, bonus=bonus, phone=phone, dept_id= dept, role_id=role, hire_date= datetime.now())
         new_emp.save()
         return HttpResponse('Employee added Successfully')
 

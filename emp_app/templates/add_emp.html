@@ -1,59 +1,59 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>Add An Employee</title>
+    <title> EMS | Add Employee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
   <body>
-  <a class="btn btn-primary" href='index' role="button">Home</a>
+
   <div class="container">
-    <h1>Employee Management System</h1>
-
+          <h1>Add Employee</h1>
       <hr>
-      <form action="/add_emp" method="post">
-          {% csrf_token %}
-    <label for="First_name" >First Name</label><br>
-        <input type="text" id="First_name" name ="First_name" value="{{ First_name }}" ><br>
 
-          <label for="Last_name" >Last Name</label><br>
-    <input type="text" id="Last_name" name ="Last_name" value="{{ Last_name }}" ><br>
+<form action="/add_emp" method="post">
+    {% csrf_token %}
+    <label for="first_name">First Name:</label><br>
+    <input type="text" pattern="^[a-zA-Z]+$" placeholder="Letters only" id="first_name" name="first_name" size="15" minlength="2" maxlength="12" required><br>
 
-          <label for="salary" >Salary</label><br>
-    <input type="number" id="salary" name="salary" value="{{ salary }}" ><br>
+    <label for="last_name">Last Name:</label><br>
+    <input type="text" pattern="^[a-zA-Z]+$" placeholder="Letters only" id="last_name" name = "last_name" size="15" minlength="2" maxlength="12" required><br>
 
-          <label for="dept" >Department</label><br>
-    <input type="number" id="dept" name="dept" value="{{ dept }}" ><br>
+      <label for="dept">Department:</label> <br>
+    <input type="number"  list="Department" placeholder="1-4" id="dept" name="dept" min="1" max="4" required >
 
-          <label for="role" >Role</label><br>
-    <input type="number" id="role" name="role" value="{{ role }}" ><br>
+    <datalist id="Department">
+        <option value="1">HR</option>
+        <option value="2">Javascript Devs</option>
+        <option value="3">Python Devs</option>
+        <option value="4">Automation</option>
+    </datalist><br>
 
-          <label for="bonus" >Bonus</label><br>
-    <input type="number" id="bonus" name="bonus" value="{{ bonus }}" ><br>
+        <label for="role">Role:</label> <br>
+            <input type="number" list="Role" placeholder="1-4" id="role" name="role" min="1" max="4" required>
 
-          <label for="Phone" >Phone number</label><br>
-    <input type="number" id="Phone" name="Phone" value="{{ phone }}" ><br>
+            <datalist id="Role">
+                <option value="1">taga hugas pwet</option>
+                <option value="2">taga linis pinggan</option>
+                <option value="3">taga luto</option>
+                <option value="4">taga walis</option>
+            </datalist><br>
 
-          <hr>
-      <button type="submit" class="btn btn-primary">Submit</button>
+    <label for="salary">Salary:</label><br>
+    <input type="number" id="salary" name="salary" placeholder="P500-50000"  min="0" max="50000" step="500" required><br>
 
+    <label for="bonus">Bonus:</label><br>
+    <input type="number" id="bonus" name="bonus" placeholder="P0-50000"  min="0" max="50000" step="500" required><br>
+
+    <label for="phone">Phone Number:</label><br>
+    <input type="tel" id="phone" name="phone" placeholder="0000-000-0000" pattern="[0-9]{11}"required size="15" minlength="11" maxlength="18"><br>
+
+    <hr>
+    <button type="submit" class="btn btn-primary">Add</button>
+       <button type="reset" class="btn btn-primary">Clear</button>
+          <a class="btn btn-primary" href='index' role="button">Home</a><br>
 </form>
-
-
-
   </div>
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
-
 </html>
