@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sent Mails</title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>Sent Mails</h1>
+    <hr>
+
+    <table class="table table-striped table-striped">
+        {% for mail in mails %}
+        <tbody>
+        <tr>
+            <th scope="row">{{ mail.id }}</th>
+            <td>{{ mail.recipient }}</td>
+            <td>{{ mail.subject }}</td>
+            <td>{{ mail.content }}</td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    <hr>
+    <a class="btn btn-primary" href='/index' role="button">Home</a>
+</div>
+
+<script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>

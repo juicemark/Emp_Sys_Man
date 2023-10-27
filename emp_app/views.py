@@ -125,9 +125,9 @@ def Mails(request):
         mail = Mail(recipient=recipient, subject=subject, content=content)
         mail.save()
 
-        return render(request, 'create_mail.html', {'mail_added': True})
+        return render(request, 'create_mail1.html', {'mail_added': True})
     elif request.method == 'GET':
-        return render(request, 'create_mail.html')
+        return render(request, 'create_mail1.html')
     else:
         return HttpResponse("An exception occurred! Mail was not created")
 
