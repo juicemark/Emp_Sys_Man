@@ -25,12 +25,18 @@ from django.shortcuts import redirect
 urlpatterns = ([
     path('', views.index, name='index'),
     path("accounts/", include("django.contrib.auth.urls")),
-    path('index/', views.index, name='index'),
-    path('all_emp/', views.all_emp, name='all_emp'),
-    path('add_emp/', views.add_emp, name='add_emp'),
-    path('remove_emp/', views.remove_emp, name='remove_emp'),
-    path('remove_emp/<int:emp_id>', views.remove_emp, name='remove_emp'),
-    path('filter_emp/', views.filter_emp, name='filter_emp'),
+    path('index', views.index, name='index'),
+    path('all_emp', views.all_emp, name='all_emp'),
+    path('add_emp', views.add_emp, name='add_emp'),
+    path('remove_emp', views.remove_emp, name='remove_emp'),
+    path('remove_emp<int:emp_id>', views.remove_emp, name='remove_emp'),
+    path('filter_emp', views.filter_emp, name='filter_emp'),
+    path('memo_form', views.memo_create, name='memo_form'),
+    path('memo_list', views.memo_list, name='memo_list'),
+    path('', views.memo_list, name='memo_list'),
+    path('create/', views.memo_create, name='memo_create'),
+    path('update/<int:pk>/', views.memo_update, name='memo_update'),
+    path('delete/<int:pk>/', views.memo_delete, name='memo_delete'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) +
                static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))

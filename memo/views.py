@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Memo
-from .forms import MemoForm
+from emp_app.forms import MemoForm
 
 
 def memo_list(request):
