@@ -23,7 +23,7 @@
 <div class="container">
     <h1>Create Mail</h1>
     <hr>
-    <form method="post" action="http://127.0.0.1:8000/create_mail/">
+    <form method="post" action="http://127.0.0.1:8000/create_mail">
         {% csrf_token %}
         <label for="recipient">Recipient:</label><br>
         <input id="recipient" name="recipient" size="25" minlength="2" maxlength="50" required><br>
@@ -46,6 +46,7 @@
             <!-- Home Button -->
             <a class="btn btn-primary" href="/index" role="button">Home</a>
             {% endif %}
+            <a class="btn btn-primary" href='/index_mail' role="button">Back</a>
         </div><br>
     </form>
 </div>

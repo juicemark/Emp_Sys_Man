@@ -1,10 +1,34 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>receive</title>
+    <title>Received Mails</title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 </head>
 <body>
-resib
+<div class="container">
+    <h1>Received Mails</h1>
+    <hr>
+
+    <table class="table table-striped table-striped">
+        {% for mail in mails %}
+        <tbody>
+        <tr>
+            <th scope="row">{{ mail.id }}</th>
+            <td>{{ mail.respondent }}</td>
+            <td>{{ mail.topic }}</td>
+            <td>{{ mail.reply }}</td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    <hr>
+    <a class="btn btn-primary" href='/index' role="button">Home</a>
+    <a class="btn btn-primary" href='/index_mail' role="button">Back</a>
+
+</div>
+
+<script src="{% static 'js/bootstrap.js' %}"></script>
 </body>
 </html>

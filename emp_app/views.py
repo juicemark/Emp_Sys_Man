@@ -121,6 +121,7 @@ def Mails(request):
         subject = request.POST['subject']
         content = request.POST['content']
 
+
         # Create a new Mail object and save it to the database
         mail = Mail(recipient=recipient, subject=subject, content=content)
         mail.save()
@@ -132,6 +133,25 @@ def Mails(request):
         return HttpResponse("An exception occurred! Mail was not created")
 
 
+def Reply(request):
+    if request.method == 'POST':
+        recipient = request.POST['recipient']
+        subject = request.POST['subject']
+        content = request.POST['content']
+
+        # Create a new Mail object and save it to the database
+        mail = Mail(recipient=recipient, subject=subject, content=content)
+        mail.save()
+
+        return render(request, 'reply_mail.html', {'mails_added': True})
+    elif request.method == 'GET':
+        return render(request, 'reply_mail.html')
+    else:
+        return HttpResponse("An exception occurred! Mail was not created")
+
+
+
+
 def index_mail(request):
     return render(request, 'index_mail.html')
 
@@ -139,3 +159,9 @@ def sent_mail(request):
     mails = Mail.objects.all()  # Query the database for all sent mails
 
     return render(request, 'sent_mail.html', {'mails': mails})
+
+def received_mail(request):
+    mails = Mail.objects.all()
+
+
+    return render(request, 'received_mail.html', {'mails' : mails})
