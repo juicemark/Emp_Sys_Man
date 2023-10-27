@@ -28,6 +28,14 @@
     <a class="btn btn-primary" href="/add_emp" role="button">Add An Employee</a>
     <a class="btn btn-primary" href="/remove_emp" role="button">Remove An Employee</a>
     <a class="btn btn-primary" href="/filter_emp" role="button">Filter Employee Details</a>
+
+    <!-- Button group for alignment -->
+    <div class="btn-group" role="group">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Create a Mail
+        </button>
+    </div>
+
     <button class="btn btn-primary dropdown-toggle" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Memo Forms
     </button>
@@ -39,55 +47,39 @@
     </div>
 </div>
 
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Create a Mail
-</button>
-
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create Mail</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Mail</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="emailForm">
+                    <div class="form-group">
+                        <label for="recipientEmail">Recipient's Email Address</label>
+                        <input type="email" class="form-control" id="recipientEmail" placeholder="Enter recipient's email">
+                    </div>
 
-        <form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-        </form>
+                    <div class="form-group">
+                        <label for="emailSubject">Subject</label>
+                        <input type="text" class="form-control" id="emailSubject" placeholder="Enter email subject">
+                    </div>
 
-          <form>
-              <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Subject</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" >
-</div>
-          </form>
-
-          <form>
- <div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label"></label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>
-          </form>
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send </button>
-      </div>
+                    <div class="form-group">
+                        <label for="emailBody">Email Body</label>
+                        <textarea class="form-control" id="emailBody" rows="5" placeholder="Enter email body"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="sendEmailButton">Send</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-
-
 
 <!-- Include Bootstrap JavaScript without jQuery and Popper -->
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
