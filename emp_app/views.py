@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .models import Memo
 from emp_app.forms import MemoForm
+from .models import Mail
 
 # Create your views here.
 @login_required
@@ -112,3 +113,29 @@ def memo_delete(request, pk):
     memo = Memo.objects.get(pk=pk)
     memo.delete()
     return redirect('memo_list')
+
+
+def Mails(request):
+    if request.method == 'POST':
+        recipient = request.POST['recipient']
+        subject = request.POST['subject']
+        content = request.POST['content']
+
+        # Create a new Mail object and save it to the database
+        mail = Mail(recipient=recipient, subject=subject, content=content)
+        mail.save()
+
+        return render(request, 'create_mail.html', {'mail_added': True})
+    elif request.method == 'GET':
+        return render(request, 'create_mail.html')
+    else:
+        return HttpResponse("An exception occurred! Mail was not created")
+
+
+def index_mail(request):
+    return render(request, 'index_mail.html')
+
+def sent_mail(request):
+    mails = Mail.objects.all()  # Query the database for all sent mails
+
+    return render(request, 'sent_mail.html', {'mails': mails})

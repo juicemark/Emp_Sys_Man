@@ -36,3 +36,8 @@ class Memo(models.Model):
 
     def __str__(self):
         return self.title
+
+class Mail(models.Model):
+    recipient = models.CharField(max_length=100)
+    subject = models.CharField(max_length=100)
+    content = models.CharField(max_length=100)
